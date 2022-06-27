@@ -2,21 +2,18 @@
 
 .MyOrder {
 	width: 360px;
+	position: absolute;
 	padding: 24px;
 	box-sizing: border-box;
-	position: absolute;
-	right: -360px;
-	background-color: white;
+	right: 0;
+	background-color: var(--white);
 	top: 60px;
-	bottom: 0;
 	border-radius: 6px;
 	border: 1px solid var(--very-light-pink);
-	position: fixed;
-	transition: 1s ease;
-	animation: swipeLeft 1s ease forwards;
-}
-@keyframes swipeLeft {
-	100% {transform: translateX(-360px);}
+	height: 90vh;
+	animation: swipeLeft .40s;
+	display: flex;
+	flex-direction: column;
 }
 .title-container {
 	display: flex;
@@ -67,4 +64,11 @@
 	.MyOrder {
 		width: 100%;
 	}
+}
+.cart-product-list {
+	max-height: calc(100vh - 340px);
+	overflow-y: auto;
+}
+.cart-product-list::-webkit-scrollbar {
+	display: none;
 }
