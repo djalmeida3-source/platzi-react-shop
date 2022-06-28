@@ -10,18 +10,23 @@ import MyOrder from '@containers/MyOrder';
 const Header = () => {
     const [toggle, setToggle] = useState(false);
     const [toggleOrders, setToggleOrders] = useState(false);
+    const [menuToggle, setMenuToggle] = useState(false);
     const { state } = useContext(AppContext);
 
     const handleToggle = () => {
         setToggle(!toggle);
     }
 
+    const handleMenuLeftToggle = () => {
+        setMenuToggle(!menuToggle);
+    }
+
     return (
         <nav>
-            <img src={menu} alt="menu" className="menu" />
+            <img src={menu} alt="menu" className="menu" onClick={handleMenuLeftToggle}/>
             <div className="navbar-left">
                 <img src={logo} alt="logo" className="nav-logo" />
-                <ul>
+                <ul className={'menu-left' + (menuToggle ? '--active':'')}>
                     <li>
                         <a href="/">All</a>
                     </li>
@@ -40,6 +45,17 @@ const Header = () => {
                     <li>
                         <a href="/">Others</a>
                     </li>
+                    {menuToggle && 
+                        <div className={menuToggle ? 'settings-user' : ''}>
+                            <div className='line'></div>
+                            <a href="/">My orders</a>
+                            <a href="/">My account</a>
+                            <div className='user'>
+                                <a className='user-email'>platzi@example.com</a>
+                                <a className='singOut'>Sign out</a>
+                            </div>
+                        </div>
+                    }
                 </ul>
             </div>
             <div className="navbar-right">
